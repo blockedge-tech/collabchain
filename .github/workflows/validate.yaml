@@ -1,0 +1,14 @@
+name: Pull Request validation
+
+on: [pull_request]
+
+
+jobs:
+  hackseries-contracts-ci:
+    name: Run hackseries-contracts validation
+    uses: ./.github/workflows/hackseries-contracts-ci.yaml
+
+  hackseries-frontend-ci:
+    name: Run hackseries-frontend validation
+    uses: ./.github/workflows/hackseries-frontend-ci.yaml
+
