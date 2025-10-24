@@ -131,8 +131,57 @@ If a fraudulent certificate (e.g., manipulated PDF) is submitted for verificatio
 | **Data Privacy Risks** | Exposure of sensitive user information | Only cryptographic hashes and metadata are stored on-chain; files remain decentralized on IPFS without personal identifiers. |
 
 ---
+## 5. How to Run
 
-## 5. Technical Advantages
+### Prerequisites
+- Node.js and npm installed
+- Python 3.x installed
+- Git installed
+
+### Installation Steps
+
+1. **Clone the repository**
+   ```bash
+   git clone [repository-link]
+   ```
+
+2. **Unzip the file** (if downloaded as ZIP)
+
+3. **Navigate to the project directory**
+   ```bash
+   cd collabchain
+   cd hackseries
+   ```
+
+4. **Open Workspaces**
+   - 3 terminals will be opened automatically
+   - Add another terminal for the frontend
+
+5. **Install frontend dependencies**
+   
+   In the frontend terminal:
+   ```bash
+   npm i
+   ```
+
+6. **Start the frontend development server**
+   
+   In another frontend terminal:
+   ```bash
+   npm start
+   ```
+
+7. **Start the backend server**
+   
+   In a separate terminal:
+   ```bash
+   cd backend
+   uvicorn main:app --reload
+   ```
+---
+
+
+## 6. Technical Advantages
 
 | Feature | Traditional Systems | CollabChain |
 | --- | --- | --- |
@@ -145,7 +194,7 @@ If a fraudulent certificate (e.g., manipulated PDF) is submitted for verificatio
 
 ---
 
-## 6. Future Enhancements
+## 7. Future Enhancements
 
 1. **AI-based Research Validation:** Integrate natural language models to assess originality and plagiarism in academic submissions.
 2. **University and Organization Dashboards:** Enable large-scale issuance and management of credentials with role-based access control.
@@ -154,13 +203,13 @@ If a fraudulent certificate (e.g., manipulated PDF) is submitted for verificatio
 
 ---
 
-## 7. Conclusion
+## 8. Conclusion
 
 CollabChain provides a sustainable and verifiable solution to one of the most critical issues in academic and professional ecosystems — credential authenticity. By leveraging the Algorand blockchain, IPFS, and smart contract automation, the platform eliminates the need for intermediaries and manual validation processes. Each credential becomes a transparent, permanent, and independently verifiable proof of achievement, enabling a secure digital identity ecosystem for education and employment.
 
 ---
 
-## 8. References
+## 9. References
 
 1. Silvio Micali, *Algorand: The Efficient and Democratic Ledger*, MIT CSAIL, 2017.
 2. InterPlanetary File System (IPFS), *Protocol Labs Documentation*, 2024.
