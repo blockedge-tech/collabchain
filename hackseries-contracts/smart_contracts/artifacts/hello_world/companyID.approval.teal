@@ -1,0 +1,90 @@
+#pragma version 11
+#pragma typetrack false
+
+// algopy.arc4.ARC4Contract.approval_program() -> uint64:
+main:
+    intcblock 0 2
+    // hello_world/contract.py:12
+    // class companyID(ARC4Contract):
+    txn NumAppArgs
+    bz main___algopy_default_create@5
+    pushbytes 0x2f35ea4d // method "companyhashCode(string,string)byte[]"
+    txna ApplicationArgs 0
+    match main_companyhashCode_route@3
+    err
+
+main_companyhashCode_route@3:
+    // hello_world/contract.py:13
+    // @abimethod()
+    txn OnCompletion
+    !
+    txn ApplicationID
+    &&
+    assert // OnCompletion must be NoOp && can only call when not creating
+    b companyhashCode
+
+main___algopy_default_create@5:
+    txn OnCompletion
+    !
+    txn ApplicationID
+    !
+    &&
+    return // on error: OnCompletion must be NoOp && can only call when creating
+
+
+// smart_contracts.hello_world.contract.companyID.companyhashCode[routing]() -> void:
+companyhashCode:
+    // hello_world/contract.py:13
+    // @abimethod()
+    txna ApplicationArgs 1
+    dup
+    intc_0 // 0
+    extract_uint16
+    intc_1 // 2
+    +
+    dig 1
+    len
+    ==
+    assert // invalid number of bytes for (len+utf8[])
+    txna ApplicationArgs 2
+    dup
+    intc_0 // 0
+    extract_uint16
+    intc_1 // 2
+    +
+    dig 1
+    len
+    ==
+    assert // invalid number of bytes for (len+utf8[])
+    // hello_world/contract.py:15
+    // input_bytes = wallet.bytes + companyname.bytes
+    concat
+    // hello_world/contract.py:16
+    // code = sha256(input_bytes)
+    sha256
+    // hello_world/contract.py:17
+    // part1 = arc4.DynamicBytes.from_bytes(extract(code, 7, 5))
+    dup
+    extract 7 5
+    // hello_world/contract.py:18
+    // part2 = arc4.DynamicBytes.from_bytes(extract(code, 16, 3))
+    swap
+    extract 16 3
+    // hello_world/contract.py:19
+    // res = part1 + part2
+    extract 2 0
+    concat // on error: max array length exceeded
+    dup
+    extract 2 0
+    len
+    itob
+    extract 6 2
+    replace2 0
+    // hello_world/contract.py:13
+    // @abimethod()
+    pushbytes 0x151f7c75
+    swap
+    concat
+    log
+    pushint 1 // 1
+    return

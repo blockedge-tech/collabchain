@@ -1,0 +1,5 @@
+fastapi
+uvicorn
+algokit-utils
+requests
+python-dotenv

@@ -1,0 +1,476 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    font-weight: 700;
+  }
+}
+
+@layer components {
+  /* ======================== */
+  /* GLASSMORPHISM EFFECTS */
+  /* ======================== */
+  
+  .glass {
+    @apply bg-white/10 backdrop-blur-2xl border border-white/20;
+  }
+  
+  .glass-light {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+  }
+  
+  .glass-dark {
+    @apply bg-slate-900/60 backdrop-blur-2xl border border-purple-500/20;
+  }
+  
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl;
+  }
+  
+  /* ======================== */
+  /* GRADIENT TEXT */
+  /* ======================== */
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent;
+  }
+  
+  .gradient-text-primary {
+    @apply bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent;
+  }
+  
+  /* ======================== */
+  /* BUTTONS */
+  /* ======================== */
+  
+  .btn-primary {
+    @apply bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 
+           text-white font-bold px-8 py-4 rounded-xl shadow-lg shadow-purple-500/30
+           transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/50
+           active:scale-95;
+  }
+  
+  .btn-secondary {
+    @apply bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/30
+           text-white font-semibold px-8 py-4 rounded-xl backdrop-blur-sm
+           transition-all duration-300 active:scale-95;
+  }
+  
+  .btn-outline {
+    @apply bg-transparent border-2 border-purple-500 text-purple-500 hover:bg-purple-500/10
+           font-semibold px-8 py-4 rounded-xl transition-all duration-300 active:scale-95;
+  }
+  
+  .btn-cyber {
+    @apply bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold px-6 py-3 
+           rounded-xl shadow-lg transition-all duration-300 hover:shadow-purple-500/50 
+           hover:scale-105 active:scale-95;
+  }
+  
+  .btn-neon {
+    @apply bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold px-6 py-3 
+           rounded-xl shadow-lg transition-all duration-300 hover:shadow-pink-500/50 
+           hover:scale-105 active:scale-95;
+  }
+  
+  /* ======================== */
+  /* CARDS */
+  /* ======================== */
+  
+  .card {
+    @apply bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-8
+           transition-all duration-300 hover:border-purple-500/50 
+           hover:shadow-xl hover:shadow-purple-500/20;
+  }
+  
+  .card-3d {
+    @apply bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-8
+           transition-all duration-300 transform-gpu;
+  }
+  
+  .card-cyber {
+    @apply bg-slate-800/50 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-6 
+           transition-all duration-300 hover:border-purple-500/50 
+           hover:shadow-lg hover:shadow-purple-500/20;
+  }
+  
+  .card-neon {
+    @apply bg-slate-800/50 backdrop-blur-sm border border-pink-500/20 rounded-2xl p-6 
+           transition-all duration-300 hover:border-pink-500/50 
+           hover:shadow-lg hover:shadow-pink-500/20;
+  }
+  
+  /* ======================== */
+  /* GLOW EFFECTS */
+  /* ======================== */
+  
+  .glow {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.5), 0 0 40px rgba(168, 85, 247, 0.3);
+  }
+  
+  .glow-purple {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.5), 0 0 40px rgba(168, 85, 247, 0.3);
+  }
+  
+  .glow-pink {
+    box-shadow: 0 0 20px rgba(236, 72, 153, 0.5), 0 0 40px rgba(236, 72, 153, 0.3);
+  }
+  
+  .glow-cyan {
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.5), 0 0 40px rgba(6, 182, 212, 0.3);
+  }
+  
+  /* ======================== */
+  /* NAVIGATION */
+  /* ======================== */
+  
+  .nav-glass {
+    @apply sticky top-0 z-50 bg-white/5 backdrop-blur-2xl border-b border-white/10;
+  }
+  
+  /* ======================== */
+  /* BACKGROUNDS */
+  /* ======================== */
+  
+  .bg-gradient-dark {
+    @apply bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900;
+  }
+  
+  .bg-gradient-light {
+    @apply bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50;
+  }
+  
+  /* ======================== */
+  /* PERSPECTIVE & 3D */
+  /* ======================== */
+  
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .transform-3d {
+    transform-style: preserve-3d;
+  }
+}
+
+@layer utilities {
+  /* ======================== */
+  /* CUSTOM SCROLLBAR */
+  /* ======================== */
+  
+  .scrollbar-custom::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .scrollbar-custom::-webkit-scrollbar-track {
+    @apply bg-slate-800/50;
+  }
+  
+  .scrollbar-custom::-webkit-scrollbar-thumb {
+    @apply bg-purple-600 rounded-full;
+  }
+  
+  .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+    @apply bg-purple-500;
+  }
+  
+  /* ======================== */
+  /* ANIMATED BACKGROUNDS */
+  /* ======================== */
+  
+  .bg-animated-gradient {
+    background: linear-gradient(135deg, #0f172a 0%, #581c87 25%, #831843 50%, #581c87 75%, #0f172a 100%);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+  }
+  
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  .bg-cyber-gradient {
+    background: linear-gradient(135deg, #9333ea 0%, #ec4899 50%, #f97316 100%);
+  }
+  
+  .bg-neon-gradient {
+    background: linear-gradient(135deg, #a855f7 0%, #ec4899 50%, #f97316 100%);
+  }
+  
+  /* ======================== */
+  /* BACKDROP BLUR VARIANTS */
+  /* ======================== */
+  
+  .backdrop-blur-xs {
+    backdrop-filter: blur(2px);
+  }
+  
+  .backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+  }
+  
+  .backdrop-blur-md {
+    backdrop-filter: blur(8px);
+  }
+  
+  .backdrop-blur-lg {
+    backdrop-filter: blur(12px);
+  }
+  
+  .backdrop-blur-xl {
+    backdrop-filter: blur(16px);
+  }
+  
+  .backdrop-blur-2xl {
+    backdrop-filter: blur(24px);
+  }
+  
+  .backdrop-blur-3xl {
+    backdrop-filter: blur(40px);
+  }
+  
+  /* ======================== */
+  /* ANIMATIONS */
+  /* ======================== */
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .animate-spin-slow {
+    animation: spin 20s linear infinite;
+  }
+  
+  /* ======================== */
+  /* TEXT UTILITIES */
+  /* ======================== */
+  
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* ======================== */
+  /* 3D CARD ANIMATIONS */
+  /* ======================== */
+  
+  /* 3D Tilt Effect on Hover */
+  .card-3d-tilt {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform-style: preserve-3d;
+  }
+  
+  .card-3d-tilt:hover {
+    transform: perspective(1000px) rotateX(5deg) rotateY(5deg) translateY(-8px);
+    box-shadow: 0 20px 40px rgba(168, 85, 247, 0.3), 0 0 60px rgba(236, 72, 153, 0.2);
+  }
+  
+  /* 3D Lift Animation */
+  .card-3d-lift {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+  }
+  
+  .card-3d-lift:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(168, 85, 247, 0.4), 0 0 80px rgba(236, 72, 153, 0.3);
+  }
+  
+  /* 3D Flip Card */
+  .card-flip {
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+  
+  .card-flip:hover {
+    transform: rotateY(180deg);
+  }
+  
+  .card-flip-front,
+  .card-flip-back {
+    backface-visibility: hidden;
+  }
+  
+  .card-flip-back {
+    transform: rotateY(180deg);
+  }
+  
+  /* 3D Floating Card with Rotation */
+  .card-3d-float {
+    animation: float3d 6s ease-in-out infinite;
+    transform-style: preserve-3d;
+  }
+  
+  @keyframes float3d {
+    0%, 100% {
+      transform: translateY(0px) rotateX(0deg) rotateY(0deg);
+    }
+    25% {
+      transform: translateY(-15px) rotateX(5deg) rotateY(5deg);
+    }
+    50% {
+      transform: translateY(-20px) rotateX(0deg) rotateY(10deg);
+    }
+    75% {
+      transform: translateY(-15px) rotateX(-5deg) rotateY(5deg);
+    }
+  }
+  
+  /* 3D Perspective Hover */
+  .card-3d-perspective {
+    transition: all 0.4s ease;
+    transform-style: preserve-3d;
+  }
+  
+  .card-3d-perspective:hover {
+    transform: perspective(1000px) translateZ(20px) scale(1.05);
+    box-shadow: 0 30px 60px rgba(168, 85, 247, 0.35), 
+                0 0 100px rgba(236, 72, 153, 0.25);
+  }
+  
+  /* 3D Rotate on Hover */
+  .card-3d-rotate {
+    transition: transform 0.5s ease;
+    transform-style: preserve-3d;
+  }
+  
+  .card-3d-rotate:hover {
+    transform: perspective(800px) rotateY(10deg) rotateX(-5deg);
+  }
+  
+  /* 3D Bounce */
+  .card-3d-bounce:hover {
+    animation: bounce3d 0.8s ease;
+  }
+  
+  @keyframes bounce3d {
+    0%, 100% {
+      transform: perspective(1000px) translateY(0) scale(1);
+    }
+    25% {
+      transform: perspective(1000px) translateY(-20px) scale(1.05) rotateX(5deg);
+    }
+    50% {
+      transform: perspective(1000px) translateY(-10px) scale(1.02) rotateX(0deg);
+    }
+    75% {
+      transform: perspective(1000px) translateY(-15px) scale(1.03) rotateX(-3deg);
+    }
+  }
+  
+  /* 3D Glow Pulse */
+  .card-3d-glow {
+    animation: glowPulse 3s ease-in-out infinite;
+  }
+  
+  @keyframes glowPulse {
+    0%, 100% {
+      box-shadow: 0 10px 30px rgba(168, 85, 247, 0.3), 
+                  0 0 40px rgba(236, 72, 153, 0.2);
+    }
+    50% {
+      box-shadow: 0 15px 50px rgba(168, 85, 247, 0.5), 
+                  0 0 80px rgba(236, 72, 153, 0.4),
+                  inset 0 0 20px rgba(168, 85, 247, 0.1);
+    }
+  }
+  
+  /* Interactive Tilt (Mouse Movement) */
+  .card-interactive-tilt {
+    transition: transform 0.1s ease-out;
+    transform-style: preserve-3d;
+  }
+  
+  /* Depth Layers for 3D Cards */
+  .card-layer-1 {
+    transform: translateZ(10px);
+  }
+  
+  .card-layer-2 {
+    transform: translateZ(20px);
+  }
+  
+  .card-layer-3 {
+    transform: translateZ(30px);
+  }
+  
+  /* 3D Shimmer Effect */
+  .card-3d-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .card-3d-shimmer::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.1) 50%,
+      transparent 70%
+    );
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    transition: transform 0.6s;
+  }
+  
+  .card-3d-shimmer:hover::before {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+  
+  /* Perspective Container */
+  .perspective-container {
+    perspective: 1000px;
+    perspective-origin: center;
+  }
+  
+  .perspective-container-far {
+    perspective: 2000px;
+  }
+  
+  /* 3D Transform Utilities */
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+}

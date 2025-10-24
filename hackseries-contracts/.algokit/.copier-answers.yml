@@ -1,0 +1,10 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: 1.7.0
+_src_path: gh:algorandfoundation/algokit-python-template
+author_email: puligillayashwanth@gmail.com
+author_name: Yashwanth112004
+contract_name: hello_world
+deployment_language: python
+preset_name: production
+project_name: hackseries-contracts
+
