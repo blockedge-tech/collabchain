@@ -7,7 +7,7 @@
 
 ## Abstract
 
-CollabChain is a decentralized application (DApp) built on the Algorand blockchain that provides an immutable, transparent, and tamper-resistant mechanism for issuing and verifying digital credentials. The platform addresses the long-standing issue of forged certificates, unverifiable achievements, and the inefficiency of manual background verification by combining smart contracts, IPFS storage, and cryptographic proofs. Through SoulBound Tokens (SBTs), CollabChain ensures that each credential is permanently linked to the recipient's wallet, creating a verifiable and auditable record of academic or professional achievements.
+CollabChain is a decentralized application (DApp) built on the Algorand blockchain that provides an immutable, transparent, and tamper-resistant mechanism for issuing and verifying digital credentials. The platform addresses the long-standing issue of forged certificates, unverifiable achievements, and the inefficiency of manual background verification by combining smart contracts, IPFS storage, and cryptographic proofs. CollabChain ensures that each credential is permanently linked to the recipient's wallet, creating a verifiable and auditable digital passport of academic or professional achievements.
 
 ---
 
@@ -30,7 +30,7 @@ The platform architecture follows a layered model to ensure modularity, scalabil
 | **Frontend (Web3 DApp)** | React.js, Tailwind CSS | Handles wallet connection and credential interactions. |
 | **Wallet Integration** | Pera Wallet SDK | Enables authentication, signatures, and Algorand wallet interaction. |
 | **Blockchain Network** | Algorand Testnet | Stores credential metadata with immutability. |
-| **Smart Contracts** | Python/ Algorand SDK(Pyteal) | Password Generation and Crenential Issuing |
+| **Smart Contracts** | Python/ Algorand SDK(Pyteal) | Password Generation and Credential Issuing |
 | **Backend / API Layer (Optional)** | Flask | For IPFS uploads and optional off-chain logic. |
 | **Off-chain Storage** | IPFS (Pinata) | Stores any type of data; only IPFS hash goes on-chain. |
 | **Development & Testing** | AlgoKit | Used for smart contract development and testing. |
@@ -55,37 +55,37 @@ The platform architecture follows a layered model to ensure modularity, scalabil
 
 <img width="1894" height="826" alt="image" src="https://github.com/user-attachments/assets/13fe71e7-3000-47c8-b704-e60c191d3537" />
 
-- **Issuer (Organization):** A verified institution or company registered on CollabChain.
-- **Recipient (Student/Employee):** A user with a verified Algorand wallet address.
+- **Organization (Issuer):** A verified institution or company registered on CollabChain that issues credentials to consumers.
+- **Consumer (Recipient):** A user with a verified Algorand wallet address who receives and stores credentials in their digital passport.
 
 **Process:**
 
-1. The issuer logs into the CollabChain DApp using its verified wallet credentials.
-2. The issuer uploads the following details:
-    - Recipient wallet address
+1. The organization logs into the CollabChain DApp using its verified wallet credentials.
+2. The organization uploads the following details:
+    - Consumer wallet address
     - Credential details (title, description, duration)
     - Certificate document (PDF or image)
 3. The DApp:
     - Uploads the certificate document to IPFS and retrieves a unique hash.
     - Sends the metadata and IPFS hash to the smart contract on Algorand.
-    - Executes a transaction to mint a SoulBound NFT bound to the recipient's wallet.
+    - Executes a transaction that directly connects the credential to the consumer's wallet.
+4. The consumer can view all their credentials in their **digital passport** - a unified interface displaying all achievements linked to their wallet.
 
 **Example On-chain Metadata:**
 
 ```json
 {
   "issuer": "TechNova Labs",
-  "student": "0xA4D5...",
+  "consumer": "0xA4D5...",
   "title": "Blockchain Internship",
   "duration": "June 2025 - August 2025",
   "ipfs_link": "ipfs://QmA1b2C3...",
   "issue_date": "2025-08-10",
   "verified": true
 }
-
 ```
 
-The NFT is non-transferable and acts as a verifiable digital credential that permanently resides in the recipient's wallet.
+The credential is directly connected to the consumer's wallet and acts as a verifiable digital credential that permanently resides in their digital passport.
 
 ---
 
@@ -93,10 +93,10 @@ The NFT is non-transferable and acts as a verifiable digital credential that per
 
 <img width="1896" height="829" alt="image" src="https://github.com/user-attachments/assets/8864ce6b-d6b0-4c01-924a-3a34fe4d7666" />
 
-Recipients can share their credentials via:
+Consumers can share their credentials from their digital passport via:
 
-- A **public CollabChain profile link** (e.g., `collabchain.app/verify/0xA4D5.../NFT12345`)
-- A **QR code** linked directly to the NFT's metadata.
+- A **public CollabChain profile link** (e.g., `collabchain.app/verify/0xA4D5.../credential12345`)
+- A **QR code** linked directly to the credential's metadata.
 
 This allows recruiters, universities, or third parties to instantly access verified credentials without intermediaries.
 
@@ -108,13 +108,13 @@ This allows recruiters, universities, or third parties to instantly access verif
 
 When a verifier accesses the shared credential:
 
-1. The CollabChain DApp queries the Algorand blockchain through the AlgoNode or PureStake API.
-2. The smart contract retrieves the metadata associated with the NFT.
+1. The CollabChain DApp queries the Algorand blockchain through the AlgoNode API.
+2. The smart contract retrieves the metadata associated with the credential.
 3. The verification logic ensures:
     - The issuer's wallet address is whitelisted and verified.
     - The credential hash matches the original file stored in IPFS.
-    - The NFT ownership is retained by the claimed recipient.
-    - The NFT has not been modified, transferred, or revoked.
+    - The credential ownership is retained by the claimed consumer.
+    - The credential has not been modified or revoked.
 
 Upon validation, the verifier receives a confirmation with the credential's details, timestamp, and on-chain hash.
 
@@ -131,7 +131,7 @@ If a fraudulent certificate (e.g., manipulated PDF) is submitted for verificatio
 **Integrity Mechanisms:**
 
 - IPFS guarantees content immutability.
-- Smart contracts enforce ownership and non-transferability.
+- Smart contracts enforce ownership and authenticity.
 - Issuer whitelist ensures only verified entities can issue credentials.
 - On-chain timestamps provide an auditable history of issuance.
 
@@ -159,6 +159,7 @@ If a fraudulent certificate (e.g., manipulated PDF) is submitted for verificatio
 | Document Storage | Local or cloud | Decentralized IPFS |
 | Scalability | Limited | Distributed infrastructure |
 | Transparency | Low | Full on-chain auditability |
+| Credential Access | Multiple platforms | Unified digital passport |
 
 ---
 
@@ -173,7 +174,7 @@ If a fraudulent certificate (e.g., manipulated PDF) is submitted for verificatio
 
 ## 7. Conclusion
 
-CollabChain provides a sustainable and verifiable solution to one of the most critical issues in academic and professional ecosystems — credential authenticity. By leveraging the Algorand blockchain, IPFS, and smart contract automation, the platform eliminates the need for intermediaries and manual validation processes. Each credential becomes a transparent, permanent, and independently verifiable proof of achievement, enabling a secure digital identity ecosystem for education and employment.
+CollabChain provides a sustainable and verifiable solution to one of the most critical issues in academic and professional ecosystems — credential authenticity. By leveraging the Algorand blockchain, IPFS, and smart contract automation, the platform eliminates the need for intermediaries and manual validation processes. Each credential becomes a transparent, permanent, and independently verifiable proof of achievement, stored in a consumer's digital passport, enabling a secure digital identity ecosystem for education and employment.
 
 ---
 ## 8. Smart Contract Applications
@@ -193,7 +194,8 @@ Click here to view the live project:
 
 CollabChain is a Web3-based system on Algorand that provides:
 
-- Credential issuance  
+- Credential issuance by organizations
+- Consumer digital passport for viewing all credentials
 - IPFS document storage  
 - On-chain verification  
 - Pera Wallet integration
@@ -263,11 +265,15 @@ uvicorn main:app --reload
 
 ### 6. Access the Application
 
-After both frontend and backend are running, open:
+After both frontend and backend are running, you can access the application at:
 
+**Local Development:**
 ```
 http://localhost:5173
 ```
+
+**Live Deployment:**
+The project is deployed and accessible at: [https://collabchain1.vercel.app/](https://collabchain1.vercel.app/)
 
 ---
 
