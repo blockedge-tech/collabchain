@@ -23,24 +23,37 @@ CollabChain proposes a blockchain-based model that automates credential issuance
 
 The platform architecture follows a layered model to ensure modularity, scalability, and security.
 
+## Project Architecture – Tech Stack
+
 | Layer | Technology Stack | Description |
 | --- | --- | --- |
-| **Frontend (Web3 DApp)** | React.js, Expressjs,Mongodb if required | Provides the user interface for students, issuers, and verifiers. Enables wallet connectivity, credential upload, and verification functionalities. |
-| **Wallet Integration** | Pera Wallet SDK | Facilitates user authentication, digital signatures, and blockchain interaction through Algorand-compatible wallets. |
-| **Blockchain Network** | Algorand Testnet/Mainnet | Serves as the decentralized ledger to store credential metadata and ensure immutability through transaction records. |
-| **Smart Contracts** | PyTeal (Python TEAL) or Reach | Implements credential minting, issuer verification, and access control logic. Each credential is minted as a non-transferable SoulBound Token (SBT). |
-| **Backend / API Layer (Optional)** | Node.js with Express | Provides middleware services for file handling, IPFS uploads, and issuer verification. Can be used for analytics or off-chain logic. |
-| **Off-chain Storage** | IPFS (InterPlanetary File System) / Pinata | Used for storing credential documents, certificates, and research metadata. Only the IPFS hash is stored on-chain to maintain data integrity. |
-| **Verification & AI Layer (Optional)** | Python APIs and ML models | Performs document originality and plagiarism analysis for academic or research-related credentials. |
-| **Testing & Deployment** | Algokit, AlgoNode, PureStake API | Tooling and APIs for deploying and testing smart contracts in Algorand's testnet or mainnet environments. |
+| **Frontend (Web3 DApp)** | React.js, Tailwind CSS | Handles wallet connection and credential interactions. |
+| **Wallet Integration** | Pera Wallet SDK | Enables authentication, signatures, and Algorand wallet interaction. |
+| **Blockchain Network** | Algorand Testnet | Stores credential metadata with immutability. |
+| **Smart Contracts** | Python/ Algorand SDK(Pyteal) | Password Generation and Crenential Issuing |
+| **Backend / API Layer (Optional)** | Flask | For IPFS uploads and optional off-chain logic. |
+| **Off-chain Storage** | IPFS (Pinata) | Stores any type of data; only IPFS hash goes on-chain. |
+| **Development & Testing** | AlgoKit | Used for smart contract development and testing. |
+| **Deployment** | Vercel for Frontend, Railway for Backend | Used for smart contract development and testing. |
 
 ---
 
 ## 3. Workflow: Real-World Implementation
+### Home Page
+<img width="1893" height="856" alt="image" src="https://github.com/user-attachments/assets/0fd3b47c-fa6f-495a-b5f3-02c8e4fe8f92" />
+
+### How it Works
+<img width="1893" height="830" alt="image" src="https://github.com/user-attachments/assets/0bc8ee56-ba36-4d53-acf3-f5b732136d7b" />
+
+## Pera Wallet
+<img width="1895" height="827" alt="image" src="https://github.com/user-attachments/assets/20353be6-bad7-4fd6-afe0-8041302b4789" />
+
 
 ### 3.1 Credential Issuance
 
 **Actors:**
+
+<img width="1894" height="826" alt="image" src="https://github.com/user-attachments/assets/13fe71e7-3000-47c8-b704-e60c191d3537" />
 
 - **Issuer (Organization):** A verified institution or company registered on CollabChain.
 - **Recipient (Student/Employee):** A user with a verified Algorand wallet address.
@@ -78,6 +91,8 @@ The NFT is non-transferable and acts as a verifiable digital credential that per
 
 ### 3.2 Credential Sharing
 
+<img width="1896" height="829" alt="image" src="https://github.com/user-attachments/assets/8864ce6b-d6b0-4c01-924a-3a34fe4d7666" />
+
 Recipients can share their credentials via:
 
 - A **public CollabChain profile link** (e.g., `collabchain.app/verify/0xA4D5.../NFT12345`)
@@ -88,6 +103,8 @@ This allows recruiters, universities, or third parties to instantly access verif
 ---
 
 ### 3.3 Credential Verification
+
+<img width="1892" height="844" alt="image" src="https://github.com/user-attachments/assets/6fb3ceb7-39ea-4e68-8b75-cfb02e8b019b" />
 
 When a verifier accesses the shared credential:
 
@@ -159,8 +176,102 @@ If a fraudulent certificate (e.g., manipulated PDF) is submitted for verificatio
 CollabChain provides a sustainable and verifiable solution to one of the most critical issues in academic and professional ecosystems — credential authenticity. By leveraging the Algorand blockchain, IPFS, and smart contract automation, the platform eliminates the need for intermediaries and manual validation processes. Each credential becomes a transparent, permanent, and independently verifiable proof of achievement, enabling a secure digital identity ecosystem for education and employment.
 
 ---
+## 8. Smart Contract Applications
 
-## 8. References
+**Application Name:** companyID  
+Testnet Link: https://lora.algokit.io/testnet/application/748387915
+
+**Application Name:** UserIDContract  
+Testnet Link: https://lora.algokit.io/testnet/application/748138156
+
+---
+
+## 9. Live Project – CollabChain
+
+Click here to view the live project:  
+[Click Here](https://collabchain1.vercel.app/)
+
+CollabChain is a Web3-based system on Algorand that provides:
+
+- Credential issuance  
+- IPFS document storage  
+- On-chain verification  
+- Pera Wallet integration
+
+---
+
+## 10. Installation & Setup Guide
+
+If you want to run CollabChain locally, follow the steps below.
+
+---
+
+### 1. Get the Project Code
+
+You can obtain the project source code using any of the following methods:
+
+**Option A — Fork the GitHub Repository**
+
+1. Click **Fork** on the top-right of the repository.
+2. Clone your fork locally.
+
+**Option B — Download ZIP**
+If forking does not work, select **Code → Download ZIP** and extract it.
+
+**Option C — Google Drive Backup**
+If both methods fail, use our drive backup:
+[Click Here to Access Source Code (Google Drive)](https://drive.google.com/drive/folders/1fwxrNNDSWjsKVq-d4OGncUDgupH5yALd?usp=sharing)
+
+---
+
+### 2. Open the Project in VS Code or Workspaces
+
+Once the project is downloaded, open it in **VS Code** or **Github Workspaces**.
+
+---
+
+### 3. Workspace Terminal Setup
+
+When the workspace loads, you should see **three terminals**:
+
+1. **Root Terminal**
+2. **Smart Contract Terminal**
+3. **Frontend Terminal**
+
+---
+
+### 4. Run the Frontend
+
+In the **Frontend Terminal**, execute:
+
+```
+npm run dev
+```
+
+---
+
+### 5. Start the Backend API
+
+Create a **new terminal** inside the frontend folder and run:
+
+```
+cd backend
+uvicorn main:app --reload
+```
+
+---
+
+### 6. Access the Application
+
+After both frontend and backend are running, open:
+
+```
+http://localhost:5173
+```
+
+---
+
+## 11. References
 
 1. Silvio Micali, *Algorand: The Efficient and Democratic Ledger*, MIT CSAIL, 2017.
 2. InterPlanetary File System (IPFS), *Protocol Labs Documentation*, 2024.
