@@ -275,7 +275,11 @@ http://localhost:5173
 **Live Deployment:**
 The project is deployed and accessible at: [https://collabchain1.vercel.app/](https://collabchain1.vercel.app/)
 
+**Note:**
+  Use "B2wozQ==" For Company Verification Password.
 ---
+
+
 
 ## 11. References
 
